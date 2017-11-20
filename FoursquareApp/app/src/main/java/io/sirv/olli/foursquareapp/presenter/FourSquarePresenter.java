@@ -2,13 +2,16 @@ package io.sirv.olli.foursquareapp.presenter;
 
 
 import android.content.Context;
-import android.util.Log;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
 import io.sirv.olli.foursquareapp.Base.BasePresenter;
-import io.sirv.olli.foursquareapp.presenter.model.ApiEndPoint;
+import io.sirv.olli.foursquareapp.presenter.Services.ApiEndPoint;
 import io.sirv.olli.foursquareapp.presenter.model.ApiKeys;
+import io.sirv.olli.foursquareapp.presenter.Services.ApiDateVersion;
+import io.sirv.olli.foursquareapp.presenter.model.LocationHelpers;
+import io.sirv.olli.foursquareapp.presenter.Services.LocationService;
 import io.sirv.olli.foursquareapp.presenter.model.RetrofitResponse;
 
 import retrofit2.Call;
@@ -23,53 +26,46 @@ public class FourSquarePresenter extends BasePresenter<FourSquarecontract.View> 
 
     private Context mContext;
 
-    String findCurrentLocation = "";
+    String currentLocation = "";
 
     ApiEndPoint apiEndPoint = new ApiEndPoint();
 
     ApiKeys apiKeys = new ApiKeys();
 
+    ApiDateVersion apiDateVersion = new ApiDateVersion();
+
+
     @Inject
     public FourSquarePresenter() {
     }
 
-    public void foo(Context context) {
-        // when you need location
-        // if inside activity context = this;
 
-        SingleShotLocationProvider.requestSingleUpdate(context,
-                new SingleShotLocationProvider.LocationCallback() {
-                    @Override public void onNewLocationAvailable(SingleShotLocationProvider.GPSCoordinates location) {
-                        Log.i("Location", "my location is " + location.toString());
-                    }
-                });
-    }
+    public void onTextChanged(CharSequence query,LocationHelpers locationHelpers){
 
 
-    public void onTextChanged(CharSequence query){
+        LocationService locationService = new LocationService();
+
+        currentLocation = locationService.getLocationService(locationHelpers.LocationActivity,locationHelpers.LocationContext);
+
+        String currentDateVersion = apiDateVersion.currentDate;
 
 
-        foo(mContext);
-
-            findCurrentLocation = "60.1705171,24.935404";
-
-            Log.i("Gps",findCurrentLocation.toString());
-
-            getFourSquare(query.toString(),findCurrentLocation.toString());
+            getFourSquare(query.toString(),currentLocation,currentDateVersion);
 
 
         }
 
 
-    public void getFourSquare(String query,String currLoc){
+    public void getFourSquare(String query,String currLoc,String version){
 
 
-            apiEndPoint.getAPI().getResults(apiKeys.clientId, apiKeys.clientSecret, currLoc, "20171411" ,query).enqueue(new Callback<RetrofitResponse>() {
+            apiEndPoint.getAPI().getResults(apiKeys.clientId, apiKeys.clientSecret, currLoc, version ,query).enqueue(new Callback<RetrofitResponse>() {
 
                 @Override
                 public void onResponse(Call<RetrofitResponse> call, Response<RetrofitResponse> response)
                 {
                     RetrofitResponse result = response.body();
+
 
                     if(result != null)
                         getView().onListViewPopulate(result.getResponse().getVenues());
@@ -80,6 +76,7 @@ public class FourSquarePresenter extends BasePresenter<FourSquarecontract.View> 
 
                     try {
                         throw new InterruptedException(":(");
+
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

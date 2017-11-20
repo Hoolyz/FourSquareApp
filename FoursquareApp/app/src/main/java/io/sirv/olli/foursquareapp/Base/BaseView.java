@@ -6,4 +6,6 @@ package io.sirv.olli.foursquareapp.Base;
 
 public interface BaseView {
 
+
+
 }

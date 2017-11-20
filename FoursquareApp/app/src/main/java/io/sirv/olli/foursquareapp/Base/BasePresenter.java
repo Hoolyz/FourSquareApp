@@ -1,6 +1,5 @@
 package io.sirv.olli.foursquareapp.Base;
 
-import io.sirv.olli.foursquareapp.presenter.FourSquarePresenter;
 
 /**
  * Created by Olli-Pekka on 15/11/2017.

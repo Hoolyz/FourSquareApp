@@ -4,8 +4,7 @@ import java.util.List;
 
 import io.sirv.olli.foursquareapp.Base.BaseMvpPresenter;
 import io.sirv.olli.foursquareapp.Base.BaseView;
-import io.sirv.olli.foursquareapp.Base.BasePresenter;
-import io.sirv.olli.foursquareapp.presenter.model.RetrofitResponse;
+import io.sirv.olli.foursquareapp.presenter.model.LocationHelpers;
 import io.sirv.olli.foursquareapp.presenter.model.Venue;
 
 /**
@@ -15,7 +14,7 @@ import io.sirv.olli.foursquareapp.presenter.model.Venue;
 public interface FourSquarecontract  {
 
     interface Presenter extends BaseMvpPresenter<View> {
-        void onTextChanged(CharSequence query);
+        void onTextChanged(CharSequence query,LocationHelpers locationHelpers);
 
     }
     

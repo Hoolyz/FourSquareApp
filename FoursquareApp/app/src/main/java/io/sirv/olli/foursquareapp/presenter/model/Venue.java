@@ -30,15 +30,12 @@ public class Venue {
         this.location = location;
     }
 
-    @Override
-    public String toString() {
 
-        if (this.getLocation().getAddress() == "null"){
-            return "Name:" + this.name + " Distance: " + this.getLocation().getDistance() + "";
-        }
-        else {
-
-            return "Name:" + this.name + " Address: " + this.getLocation().getAddress() + " Distance: " + this.getLocation().getDistance() + "";
-
+    public Venue(String name, String Address, int Distance)
+    {
+        this.name = name;
+        Address = getLocation().getAddress();
+        Distance = getLocation().getDistance();
     }
-}}
+
+}
