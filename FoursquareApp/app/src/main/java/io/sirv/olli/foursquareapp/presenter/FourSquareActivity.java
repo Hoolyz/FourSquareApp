@@ -16,6 +16,8 @@ import android.widget.ListView;
 import java.util.List;
 
 
+import javax.inject.Inject;
+
 import io.sirv.olli.foursquareapp.Base.BaseActivity;
 import io.sirv.olli.foursquareapp.R;
 import io.sirv.olli.foursquareapp.presenter.model.LocationHelpers;
@@ -32,6 +34,9 @@ public class FourSquareActivity extends BaseActivity<FourSquarePresenter> implem
     private ListView listView;
 
     public EditText searchText;
+
+    private FourSquarePresenter fourSquarePresenter;
+
 
     LocationHelpers locationHelpers = new LocationHelpers();
 
@@ -88,7 +93,9 @@ public class FourSquareActivity extends BaseActivity<FourSquarePresenter> implem
 
 
         }
-        else { init(savedInstanceState);}
+        else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            init(savedInstanceState);}
     }
 
     @Override

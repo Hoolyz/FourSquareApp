@@ -35,6 +35,8 @@ public class FourSquarePresenter extends BasePresenter<FourSquarecontract.View> 
     ApiDateVersion apiDateVersion = new ApiDateVersion();
 
 
+
+
     @Inject
     public FourSquarePresenter() {
     }
