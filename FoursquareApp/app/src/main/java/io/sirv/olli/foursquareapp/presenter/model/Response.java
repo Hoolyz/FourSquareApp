@@ -7,6 +7,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class Response {
 
+        /*
+
+    Api response classes
+
+     */
+
+
     @SerializedName("venues")
     @Expose
     private List<Venue> venues = null;

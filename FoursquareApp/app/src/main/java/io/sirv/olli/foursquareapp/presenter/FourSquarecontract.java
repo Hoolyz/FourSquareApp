@@ -11,6 +11,12 @@ import io.sirv.olli.foursquareapp.presenter.model.Venue;
  * Created by Olli-Pekka on 15/11/2017.
  */
 
+/*
+
+Passes key press events to presenter and returns data from presenter.
+
+ */
+
 public interface FourSquarecontract  {
 
     interface Presenter extends BaseMvpPresenter<View> {

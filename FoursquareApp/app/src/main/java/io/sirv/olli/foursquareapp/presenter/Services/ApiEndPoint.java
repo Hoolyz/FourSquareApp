@@ -14,7 +14,14 @@ import retrofit2.http.Query;
 
 public class ApiEndPoint{
 
-        private static String URL = "https://api.foursquare.com/v2/";
+        /*
+
+     Creates necessary retrofit parts. Builds the query using static url. no other Query values assigned here.
+
+     */
+
+
+    public String URL = "https://api.foursquare.com/v2/";
 
         public interface FQApi
 

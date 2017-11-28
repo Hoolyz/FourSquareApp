@@ -1,4 +1,4 @@
-package io.sirv.olli.foursquareapp.presenter;
+package io.sirv.olli.foursquareapp.presenter.Services;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -23,6 +23,12 @@ import io.sirv.olli.foursquareapp.presenter.model.Venue;
 
 public class CustomAdapter extends ArrayAdapter<Venue> {
 
+
+    /*
+
+    Creates custom adapter for Listview using Venue class.
+
+     */
 
     private Context mContext;
     private List<Venue> venueList = new ArrayList<>();

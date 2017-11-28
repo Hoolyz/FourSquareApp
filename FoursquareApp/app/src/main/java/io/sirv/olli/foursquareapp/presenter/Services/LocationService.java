@@ -17,6 +17,12 @@ import android.util.Log;
 
 public class LocationService {
 
+    /*
+
+    Gets current location of the user
+
+     */
+
 
 
     LocationManager locationManager;

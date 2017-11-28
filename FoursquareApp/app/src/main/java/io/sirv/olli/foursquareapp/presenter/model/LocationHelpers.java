@@ -9,6 +9,12 @@ import android.content.Context;
 
 public class LocationHelpers {
 
+    /*
+
+    Passing activity and context to the Presenter to be used by Location services
+
+     */
+
     public Activity LocationActivity;
 
     public Context LocationContext;

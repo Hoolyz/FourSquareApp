@@ -35,7 +35,10 @@ public class FourSquarePresenter extends BasePresenter<FourSquarecontract.View> 
     ApiDateVersion apiDateVersion = new ApiDateVersion();
 
 
+ /*
+ Dagger 2 inject
 
+  */
 
     @Inject
     public FourSquarePresenter() {
@@ -60,6 +63,9 @@ public class FourSquarePresenter extends BasePresenter<FourSquarecontract.View> 
 
     public void getFourSquare(String query,String currLoc,String version){
 
+        /*
+        Retrofit2 asynchronous call to the Foursquare api using the query word and current location. Actual query is build by ApiEndPoint fqApi.
+         */
 
             apiEndPoint.getAPI().getResults(apiKeys.clientId, apiKeys.clientSecret, currLoc, version ,query).enqueue(new Callback<RetrofitResponse>() {
 

@@ -10,6 +10,13 @@ import java.util.Date;
 
 public class ApiDateVersion {
 
+        /*
+
+    Gives current date t obe used by Foursquare api version
+
+     */
+
+
     DateFormat df = new SimpleDateFormat("yyyyMMdd");
     public String currentDate = df.format(new Date());
 

@@ -7,6 +7,12 @@ import com.google.gson.annotations.SerializedName;
 
 public class Location {
 
+    /*
+
+    Api response classes
+
+     */
+
     @SerializedName("distance")
     @Expose
     private Integer distance;

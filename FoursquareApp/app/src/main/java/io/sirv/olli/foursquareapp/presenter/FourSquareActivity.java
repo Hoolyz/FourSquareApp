@@ -16,10 +16,9 @@ import android.widget.ListView;
 import java.util.List;
 
 
-import javax.inject.Inject;
-
 import io.sirv.olli.foursquareapp.Base.BaseActivity;
 import io.sirv.olli.foursquareapp.R;
+import io.sirv.olli.foursquareapp.presenter.Services.CustomAdapter;
 import io.sirv.olli.foursquareapp.presenter.model.LocationHelpers;
 import io.sirv.olli.foursquareapp.presenter.model.Venue;
 
@@ -34,9 +33,6 @@ public class FourSquareActivity extends BaseActivity<FourSquarePresenter> implem
     private ListView listView;
 
     public EditText searchText;
-
-    private FourSquarePresenter fourSquarePresenter;
-
 
     LocationHelpers locationHelpers = new LocationHelpers();
 
@@ -62,11 +58,14 @@ public class FourSquareActivity extends BaseActivity<FourSquarePresenter> implem
     @Override
     protected void init(Bundle savedInstanceState) {
         if(hasPermissions(this,Manifest.permission.ACCESS_FINE_LOCATION)) {
+            /*
+            Does not perform any functions unless location permission has been granted.
+             */
 
 
-            locationHelpers.LocationActivity = this;
+            locationHelpers.LocationActivity = this; // Anti-Pattern solution to pass context and activity to presenter. Could not find a better solution.
 
-            locationHelpers.LocationContext = this;
+            locationHelpers.LocationContext = this; // Anti-Pattern solution to pass context and activity to presenter. Could not find a better solution.
 
             listView = findViewById(R.id.listView);
 
@@ -113,6 +112,11 @@ public class FourSquareActivity extends BaseActivity<FourSquarePresenter> implem
     @Override
     public void onListViewPopulate(List<Venue> venues){
 
+        /*
+
+        List view uses custom apadter. Services/CustomAdapter
+
+         */
 
         customAdapter = new CustomAdapter(this,venues);
 

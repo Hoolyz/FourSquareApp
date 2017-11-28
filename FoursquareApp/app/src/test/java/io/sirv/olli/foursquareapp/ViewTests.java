@@ -1,8 +1,6 @@
 package io.sirv.olli.foursquareapp;
 
 import android.content.Context;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +13,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import org.mockito.junit.MockitoJUnitRunner;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.RuntimeEnvironment;
 
-import io.sirv.olli.foursquareapp.presenter.CustomAdapter;
 import io.sirv.olli.foursquareapp.presenter.FourSquareActivity;
 import io.sirv.olli.foursquareapp.presenter.FourSquarePresenter;
 import io.sirv.olli.foursquareapp.presenter.FourSquarecontract;
@@ -36,6 +31,14 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 
 public class ViewTests {
+
+    /*
+        Tests for Listviewpopulate.
+        Tests for Text changes
+
+        100% of view tested .
+
+     */
 
     @Mock
     private FourSquarecontract.View fqView;
@@ -108,6 +111,7 @@ public class ViewTests {
 
 
     }
+
 
 
 

@@ -14,11 +14,11 @@ import java.io.IOException;
 import io.sirv.olli.foursquareapp.presenter.Services.ApiEndPoint;
 import io.sirv.olli.foursquareapp.presenter.model.ApiKeys;
 import io.sirv.olli.foursquareapp.presenter.model.RetrofitResponse;
-import okhttp3.Callback;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
 import retrofit2.Call;
 import retrofit2.Response;
+import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -30,6 +30,12 @@ import static junit.framework.Assert.assertTrue;
  */
 
 public class FourSquareApiTest {
+
+    /*
+
+    Supposedly tests the Foursquare api callback. Test goes through fine but never goes in to onResponse thus tests nothing.
+
+     */
 
     private MockWebServer server;
 
@@ -137,24 +143,25 @@ public class FourSquareApiTest {
                 .build();
 
 
-        MockResponse response = new MockResponse()
+        MockResponse body = new MockResponse()
                 .setResponseCode(200)
                 .addHeader("Content-Type", "application/json; charset=utf-8")
-                .addHeader("Cache-Control", "no-cache")
                 .setBody(testiString);
 
-        server.enqueue(response);
 
 
-        ApiEndPoint.FQApi service = retrofit.create(ApiEndPoint.FQApi.class);
+        server.enqueue(body);
 
-        service.getResults("", "", "60.1705171,24.935404", "20172011", "testi").enqueue(new retrofit2.Callback<RetrofitResponse>() {
+
+        ApiEndPoint.FQApi response = retrofit.create(ApiEndPoint.FQApi.class);
+
+        response.getResults("", "", "60.1705171,24.935404", "20172011", "testi").enqueue(new Callback<RetrofitResponse>() {
 
             @Override
-          public void onResponse(Call<RetrofitResponse> call, Response<RetrofitResponse> response) {
-            RetrofitResponse result = response.body();
+          public void onResponse(Call<RetrofitResponse> call, Response<RetrofitResponse> testiResponse) {
+            RetrofitResponse result = testiResponse.body();
 
-            assertTrue(response != null);
+            assertTrue(testiResponse != null);
               assertEquals(result, testiResponse);
               }
 

@@ -6,6 +6,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class RetrofitResponse {
 
+        /*
+
+    Api response classes
+
+     */
+
+
     @SerializedName("response")
     @Expose
     private Response response;

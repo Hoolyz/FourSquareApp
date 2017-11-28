@@ -8,11 +8,11 @@ public  class ApiKeys {
 
      /*
 
-     DEBUG REMOVE BEFORE SUBMITTING
+     Apikeys removed from release
 
       */
 
-     public String clientId = "CYEMKOM4OLTP5PHMOFVUJJAMWT5CH5G1JBCYREATW21XLLSZ";
-     public String clientSecret= "GYNP4URASNYRNRGXR5UEN2TGTKJHXY5FGSAXTIHXEUG1GYM2";
+     public String clientId = "";
+     public String clientSecret= "";
 
 }

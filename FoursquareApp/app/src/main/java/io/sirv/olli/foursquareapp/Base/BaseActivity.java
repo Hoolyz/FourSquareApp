@@ -40,11 +40,17 @@ public abstract class BaseActivity<T extends BaseMvpPresenter> extends AppCompat
 
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
+        /*
+
+        Dagger 2 builder.
+         */
+
         mActivityComponent = DaggerActivityComponent.builder()
                 .activityModule(new ActivityModule(this))
                 .build();
         injectDependencies();
         mPresenter.attach(this);
+
 
             init(savedInstanceState);
 
